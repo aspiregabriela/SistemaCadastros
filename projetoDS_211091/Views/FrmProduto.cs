@@ -63,7 +63,7 @@ namespace projetoDS_211091.Views
         private void FrmProduto_Load(object sender, EventArgs e)
         {
             ca = new Categoria();
-            cboCategorias.DataSource = ca.consultar();
+            cboCategorias.DataSource = ca.Consultar();
             cboCategorias.DisplayMember = "categoria";
             cboCategorias.ValueMember = "id";
 

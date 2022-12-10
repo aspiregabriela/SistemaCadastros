@@ -198,9 +198,9 @@
             // 
             // txtMarcas
             // 
-            this.txtMarcas.Location = new System.Drawing.Point(12, 63);
+            this.txtMarcas.Location = new System.Drawing.Point(15, 63);
             this.txtMarcas.Name = "txtMarcas";
-            this.txtMarcas.Size = new System.Drawing.Size(443, 20);
+            this.txtMarcas.Size = new System.Drawing.Size(440, 20);
             this.txtMarcas.TabIndex = 18;
             // 
             // label1

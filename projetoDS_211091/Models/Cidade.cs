@@ -69,9 +69,8 @@ namespace projetoDS_211091.Models
             try
             {
                 Banco.AbrirConexao();
-                Banco.Comando = new MySqlCommand("SELECT * FROM Cidades where nome like @Nome" +
-                                                                 "order by nome", Banco.Conexao);
-                Banco.Comando.Parameters.AddWithValue("@nome", nome);
+                Banco.Comando = new MySqlCommand("SELECT * FROM Cidades where nome like @nome_cidade order by nome", Banco.Conexao);
+                Banco.Comando.Parameters.AddWithValue("@nome_cidade", nome);
                 Banco.Adaptador = new MySqlDataAdapter(Banco.Comando);
                 Banco.DatTable = new DataTable();
                 Banco.Adaptador.Fill(Banco.DatTable);
@@ -84,7 +83,7 @@ namespace projetoDS_211091.Models
                 return null;
             }
 
-             }
+        }
 
             public void Alterar()
             {

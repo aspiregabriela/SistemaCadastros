@@ -102,12 +102,12 @@ namespace projetoDS_211091.Models
                                                                                     "order by p.id", Banco.Conexao);
                     Banco.Comando.Parameters.AddWithValue("@descricao", descricao + "%");
 
-                    Banco.Adptador = new MySqlDataAdapter(Banco.Comando);
-                    Banco.datTabela = new DataTable();
-                    Banco.Adptador.Fill(Banco.datTabela);
+                    Banco.Adaptador = new MySqlDataAdapter(Banco.Comando);
+                    Banco.DatTable = new DataTable();
+                    Banco.Adaptador.Fill(Banco.DatTable);
 
                     Banco.FecharConexao();
-                    return Banco.datTabela;
+                    return Banco.DatTable;
                 }
                 catch (Exception e)
                 {

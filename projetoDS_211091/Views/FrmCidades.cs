@@ -32,9 +32,10 @@ namespace projetoDS_211091.Views
         void carregarGrid(string pesquisa)
         {
             c = new Cidade()
-            {
+            {   
                 nome = pesquisa
             };
+
             dgvCidades.DataSource = c.Consultar();
 
         }

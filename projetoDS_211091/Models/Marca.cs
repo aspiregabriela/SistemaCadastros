@@ -80,9 +80,11 @@ namespace projetoDS_211091.Models
                 Banco.Comando = new MySqlCommand("SELECT * FROM Marcas WHERE nome LIKE @nome" +
                     " ORDER BY nome", Banco.Conexao);
                 Banco.Comando.Parameters.AddWithValue("@nome", nome + "%");
+
                 Banco.Adaptador = new MySqlDataAdapter(Banco.Comando);
                 Banco.DatTable = new DataTable();
                 Banco.Adaptador.Fill(Banco.DatTable);
+
                 Banco.FecharConexao();
                 return Banco.DatTable;
             }

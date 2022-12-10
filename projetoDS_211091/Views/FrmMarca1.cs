@@ -33,7 +33,8 @@ namespace projetoDS_211091.Views
             {
                 marca = pesquisa
             };
-            dgvMarcas.DataSource = m.consultar();
+            dgvMarcas.DataSource = m.Consultar();
+
         }
         private void FrmMarca1_Load(object sender, EventArgs e)
         {
@@ -48,11 +49,13 @@ namespace projetoDS_211091.Views
                 if (txtMarcas.Text == String.Empty) return;
 
                 m = new Marca()
+
                 {
                     marca = txtMarcas.Text
 
                 };
-                m.insert();
+
+                m.Incluir();
 
                 limpaControles();
                 carregarGrid("");
@@ -66,6 +69,27 @@ namespace projetoDS_211091.Views
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (txtID.Text == String.Empty) return;
+
+                m = new Marca()
+                {
+                    id = int.Parse(txtID.Text),
+                    marca = txtMarcas.Text
+                };
+
+                m.Alterar();
+
+                limpaControles();
+                carregarGrid("");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
 

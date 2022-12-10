@@ -21,14 +21,12 @@ namespace projetoDS_211091
         //dataTable responsavel por ligar o banco em controles com a propriedade datasource
         public static DataTable DatTable;
 
-
-
         public static void AbrirConexao()
         {
             try
             {
                 //Estabelece parametros para a conecao com o banco 
-                Conexao = new MySqlConnection("server=localhost;port=3307;uid=root;pwd=etecjau");
+                Conexao = new MySqlConnection("server=localhost;port=3306;uid=root;pwd=etecjau");
                 //Abr a conexão com o banco de dados
                 Conexao.Open();
             }
@@ -49,8 +47,6 @@ namespace projetoDS_211091
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
             }
 
 
@@ -68,52 +64,41 @@ namespace projetoDS_211091
                 Comando.ExecuteNonQuery();
 
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Cidades" +
-                                          "(id integer auto_increment primary key," +
-                                          "nome char(40)," +
-                                          "uf char (02))", Conexao);
+                                           "(id integer auto_increment primary key," +
+                                           "nome char(40)," +
+                                           "uf char (02))", Conexao);
 
                 Comando.ExecuteNonQuery();
 
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Marcas" +
                                           "(id integer auto_increment primary key," +
-                                          "marca char(40),", Conexao);
+                                          "marca char(40))", Conexao);
                 Comando.ExecuteNonQuery();
 
                 Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Categorias" +
                                           "(id integer auto_increment primary key," +
-                                         "categorias char(40),", Conexao);
+                                         "categorias char(40))", Conexao);
                 Comando.ExecuteNonQuery();
 
-                Comando = new MySqlCommand("CREATE TABLE IF EXISTS Clientes" +
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Clientes" +
                                          "(id integer auto_increment primary key," +
                                          "nome char(40)," +
-                                         "idCidade interger," +
+                                         "idCidade integer," +
                                          "dataNasc date," +
                                          "renda decimal(10,2)," +
                                          "cpf char(100)," +
                                          "venda boolean)", Conexao);
                 Comando.ExecuteNonQuery();
 
-                Comando = new MySqlCommand("CREATE TABLE IF EXISTS Clientes" +
-                                         "(id integer auto_increment primary key," +
-                                         "nome char(40)," +
-                                         "idCidade interger," +
-                                         "idMarca interger," +
-                                         "estoque decimal (10,3)" +
-                                         "valorVenda decimal (10,2)," +
-                                         "foto varchar(100))", Conexao);
+                Comando = new MySqlCommand("CREATE TABLE IF NOT EXISTS Clientes" +
+                                          "(id integer auto_increment primary key," +
+                                          "nome char(40)," +
+                                          "idCidade integer," +
+                                          "idMarca integer," +
+                                          "estoque decimal (10,3)," +
+                                          "valorVenda decimal (10,2)," +
+                                          "foto varchar(100))", Conexao);
                 Comando.ExecuteNonQuery();
-
-                
-                
-
-
-
-
-
-
-
-
 
                 //chama a função fechar a conexão com o banco
                 FecharConexao();
@@ -123,18 +108,7 @@ namespace projetoDS_211091
                 MessageBox.Show(e.Message, "erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
-        }
-         
-
-
-
-
-
-
-
-
-    
+        }        
 
     }
 }
